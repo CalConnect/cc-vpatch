@@ -1,0 +1,69 @@
+[[iana-considerations]]
+== IANA Considerations
+
+=== Component Registrations
+
+This document defines the following new iCalendar components to be added to the registry
+defined in <<RFC5545,section=8.3.1>>:
+
+[cols="1,1,1",options="header"]
+|===
+| Component | Status | Reference
+| VPATCH | Current | RFCXXXX, <<cls-10.1>>
+| PATCH | Current | RFCXXXX, <<cls-10.1.1>>
+|===
+
+=== Property Registrations
+
+This document defines the following new iCalendar properties to be added to the registry
+defined in <<RFC5545,section=8.3.2>>:
+
+[cols="1,1,1",options="header"]
+|===
+| Property | Status | Reference
+| PATCH-VERSION | Current | RFCXXXX, <<cls-10.2.1>>
+| PATCH-ORDER | Current | RFCXXXX, <<cls-10.2.2>>
+| PATCH-TARGET | Current | RFCXXXX, <<cls-10.3.1>>
+| PATCH-DELETE | Current | RFCXXXX, <<cls-10.3.2>>
+| PATCH-PARAMETER | Current | RFCXXXX, <<cls-10.3.3>>
+|===
+
+=== Parameter Registrations
+
+This document defines the following new iCalendar parameters to be added to the registry
+defined in <<RFC5545,section=8.3.3>>:
+
+[cols="1,1,1",options="header"]
+|===
+| Property | Status | Reference
+| PATCH-ACTION | Current | RFCXXXX, <<cls-10.4>>
+|===
+
+=== Property and Parameter Value Registries
+
+Two new IANA registrys for iCalendar elements have been added. Additional codes MAY be used,
+provided the process described in <<RFC5545,section=8.2.1>> is used to register them, using
+the template in <<RFC5545,section=8.2.6>>.
+
+==== Patch Version Registry
+
+The following table has been used to initialize the Patch Version Registry:
+
+[cols="1,1,1",options="header"]
+|===
+| Patch Version | Status | Reference
+| 1 | Current | RFCXXXX
+|===
+
+==== Patch Action Registry
+
+The following table has been used to initialize the Patch Action Registry:
+
+[cols="1,1,1",options="header"]
+|===
+| Patch Action | Status | Reference
+| CREATE | Current | RFCXXXX, <<cls-10.4>>
+| BYNAME | Current | RFCXXXX, <<cls-10.4>>
+| BYVALUE | Current | RFCXXXX, <<cls-10.4>>
+| BYPARAM | Current | RFCXXXX, <<cls-10.4>>
+|===

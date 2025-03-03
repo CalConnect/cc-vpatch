@@ -1,0 +1,207 @@
+[appendix]
+== Remove a value from a multi-valued parameter on a property with a specific value from a component
+
+Remove the "mailto:calext@example.com" value from the "MEMBER" parameter on the "ATTENDEE"
+property with the value "mailto:cyrus@example.com" in the "VEVENT" component with the "UID"
+property value "1234".
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:Example
+VERSION:2.0
+BEGIN:VPATCH
+UID:abcd
+DTSTAMP:20160901T000000Z
+BEGIN:PATCH
+PATCH-TARGET:/VCALENDAR/VEVENT[UID=1234]
+PATCH-DELETE:#ATTENDEE[=mailto:cyrus@example.com]
+;MEMBER=mailto:calext@example.com
+END:PATCH
+END:VPATCH
+END:VCALENDAR
+----
+
+=== Remove a value from a multi-valued property from a component
+
+Remove the value "20160903T120000Z" from the "EXDATE" property in the
+"VEVENT" component with the "UID" property value "1234".
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:Example
+VERSION:2.0
+BEGIN:VPATCH
+UID:abcd
+DTSTAMP:20160901T000000Z
+BEGIN:PATCH
+PATCH-TARGET:/VCALENDAR/VEVENT[UID=1234]
+PATCH-DELETE:#EXDATE=20160903T120000Z
+END:PATCH
+END:VPATCH
+END:VCALENDAR
+----
+
+=== Attendee updating their participation status
+
+When an attendee updates their participation status in an event, they
+will typically: update the "PARTSTAT" parameter on their "ATTENDEE"
+property, remove the "RSVP" parameter on their "ATTENDEE" property,
+update the "TRANSP" property in the "VEVENT" component.  This set of
+changes is shown below in a single "PATCH" component, with the
+attendee having the calendar user address "mailto:cyrus@example.com".
+The patch targets all "VEVENT" components in the iCalendar object
+being changed.
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:Example
+VERSION:2.0
+BEGIN:VPATCH
+UID:abcd
+DTSTAMP:20160901T000000Z
+BEGIN:PATCH
+PATCH-TARGET:/VCALENDAR/VEVENT
+PATCH-DELETE:#ATTENDEE[=mailto:cyrus@example.com];RSVP
+PATCH-PARAMETER;PARTSTAT=ACCEPTED:
+#ATTENDEE[=mailto:cyrus@example.com]
+TRANSP:OPAQUE
+END:PATCH
+END:VPATCH
+END:VCALENDAR
+----
+
+=== Recurring event adding one override
+
+A daily recurring "VEVENT" component with the "SUMMARY" property
+being overridden for the second instance.
+
+iCalendar object before the patch:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:Example
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART:20160905
+DURATION:PT1H
+SUMMARY:Test event
+RRULE:FREQ=DAILY
+END:VEVENT
+END:VCALENDAR
+----
+
+Patch:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:Example
+VERSION:2.0
+BEGIN:VPATCH
+UID:abcd
+DTSTAMP:20160901T000000Z
+BEGIN:PATCH
+PATCH-TARGET:/VCALENDAR/VEVENT[RID=20160906]
+SUMMARY:Test event - modified
+END:PATCH
+END:VPATCH
+END:VCALENDAR
+----
+
+iCalendar object after the patch:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:Example
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART:20160905
+DURATION:PT1H
+SUMMARY:Test event
+RRULE:FREQ=DAILY
+END:VEVENT
+BEGIN:VEVENT
+UID:1234
+RECURRENCE-ID:20160906
+DTSTART:20160905
+DURATION:PT1H
+SUMMARY:Test event - modified
+END:VEVENT
+END:VCALENDAR
+----
+
+=== Removal of an overridden instance
+
+A daily recurring "VEVENT" component has one existing instance
+override removed with an "EXDATE" added for it.
+
+iCalendar object before the patch:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:Example
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART:20160905
+DURATION:PT1H
+SUMMARY:Test event
+RRULE:FREQ=DAILY
+END:VEVENT
+BEGIN:VEVENT
+UID:1234
+RECURRENCE-ID:20160906
+DTSTART:20160905
+DURATION:PT1H
+SUMMARY:Test event - modified
+END:VEVENT
+END:VCALENDAR
+----
+
+Patch:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:Example
+VERSION:2.0
+BEGIN:VPATCH
+UID:abcd
+DTSTAMP:20160901T000000Z
+BEGIN:PATCH
+PATCH-TARGET:/VCALENDAR
+PATCH-DELETE:/VEVENT[RID=20160906]
+END:PATCH
+BEGIN:PATCH
+PATCH-TARGET:/VCALENDAR/VEVENT[RID=M]
+EXDATE;PATCH-ACTION=CREATE:20160906
+END:PATCH
+END:VPATCH
+END:VCALENDAR
+----
+
+iCalendar object after the patch:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:Example
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART:20160905
+DURATION:PT1H
+SUMMARY:Test event
+RRULE:FREQ=DAILY
+EXDATE:20160906
+END:VEVENT
+END:VCALENDAR
+----

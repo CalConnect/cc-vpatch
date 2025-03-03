@@ -1,0 +1,79 @@
+= CalConnect Standard: The iCalendar VPATCH Component
+
+This work item belongs to CalConnect CALENDAR TC.
+
+image:https://github.com/CalConnect/cc-vpatch/workflows/generate/badge.svg["Build Status", link="https://github.com/CalConnect/cc-vpatch/actions?workflow=generate"]
+
+This document is available in its rendered forms here:
+
+* https://calconnect.github.io/cc-vpatch/[CalConnect: The iCalendar VPATCH Component]
+
+== General
+
+This document specifies The iCalendar VPATCH Component.
+
+The document is published as the following:
+
+* CalConnect CC 58020
+* IETF draft-calconnect-vpatch
+
+
+== Fetching the document
+
+[source,sh]
+----
+git clone https://github.com/CalConnect/cc-vpatch/
+----
+
+
+== Installing build tools
+
+See https://www.metanorma.com/author/topics/install/
+
+
+== Running via Docker or locally
+
+If you have installed the build tools locally, and wish to run the
+locally-installed compilation tools, there is nothing further to set.
+
+If you don't want to deal with local dependencies, use the docker:
+
+[source,sh]
+----
+docker run -v "$(pwd)":/metanorma -w /metanorma -it metanorma/mn metanorma site generate --agree-to-terms
+----
+
+
+== Building the document
+
+[source,sh]
+----
+metanorma site generate --agree-to-terms
+----
+
+The generated documents are accessible under `_site/`.
+
+
+== Iterating the document
+
+[source,sh]
+----
+metanorma site generate --agree-to-terms
+open _site/index.html
+----
+
+
+== IETF: Checking against idnits
+
+https://tools.ietf.org/tools/idnits/[idnits] is the RFC checking tool prior to
+submissions.
+
+[source,sh]
+----
+idnits {filename}.nits
+----
+
+
+== License
+
+Copyright its respective authors and CalConnect.

@@ -1,0 +1,21 @@
+[appendix]
+== metanorma-extension
+
+=== document history
+
+[EDITOR]
+====
+To be removed by RFC Editor before publication
+====
+
+[source,yaml]
+----
+- date:
+  - type: updated
+  edition: draft-daboo-icalendar-vpatch-00
+  amend:
+    - description: |
+        Allow PATCH-TARGET to use comp-path relative paths.
+
+        Fix uid-match to use escaped values.
+----

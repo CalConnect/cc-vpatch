@@ -1,0 +1,215 @@
+[[cls-5]]
+== iCalendar Path
+
+The "PATCH-TARGET", "PATCH-DELETE", and "PATCH-PARAMETER" property values are all iCalendar
+"paths". The path is used to match iCalendar elements that the patch operation will be applied
+to. The path is a list of "segments" (separated by the "/", "#", ";" or "=" characters) that
+matches an iCalendar element in the iCalendar object model hierarchy (a component, a property,
+a property parameter, a property value, or a property parameter value). A path can either be
+"absolute" (referring to items within the top-level iCalendar object being patched) or
+"relative" (referring to items within some other component as determined by the scope of the
+operation).
+
+A path can start with a series of component segments (which always have a "/" prefix). Those
+can be followed by a property segment (which always has a "#" prefix"). A property segment can
+be followed by either a parameter segment (which always has a ";" prefix), or a value segment
+(which always has a "=" prefix). A parameter segment can be followed by a value segment (which
+always has a "=" prefix).
+
+An absolute path always starts with a "/VCALENDAR" component segment since an iCalendar object
+is always a single "VCALENDAR" component.
+
+A relative path can start with a component segment or a property segment, with the path
+assumed to be relative to an enclosing component defined by the context.
+
+To target a component inside of another component, a component segment is appended to the
+path. Component segments can include an optional match item. When present, this allows
+targeting of components that match a specific "UID" property value, and/or a "RECURRENCE-ID"
+value (or lack of "RECURRENCE-ID" property to target a "master" recurrence component). See
+<<cls-11.2>> for special handling of components representing recurring items.
+
+To target a property inside of a component, a property segment is added to the path. A
+property segment can include an optional match item. When present, this allows targeting of
+properties by value (matching or not matching a specific value), or which have a named
+property parameter present, or by property parameter value (matching or not matching a
+specific value).
+
+To target a property parameter, a parameter segment is added to the property segment at the
+end of the path.
+
+To target a single value in a multi-valued property, a value segment is added to the property
+segment at the end of the path.
+
+To target a single value in a multi-valued property parameter, a value segment is added to the
+parameter segment at the end of the path.
+
+Values in match items MUST use URL-style percent (%) encoding of the characters "/", "#", ";",
+"=", and "]". This allows a path to be quickly split into segments by breaking apart the text
+on the relevant delimiter characters.
+
+The syntax for a path is defined by the following notation (note that some of the syntax
+elements defined here are not used by this specification, however, it is anticipated that this
+general path syntax will be useful for other specifications):
+
+[source%unnumbered]
+----
+abs-path         = abs-comp-path [prop-all-path]
+       ; Absolute path for any iCalendar element
+
+rel-full-path    = (comp-path [prop-all-path]) / prop-all-path
+       ; Relative path for any iCalendar element at any depth
+       ; within the enclosing component
+
+rel-one-path     = comp-path / prop-all-path
+       ; Relative path for any iCalendar element immediately
+       ; within the enclosing component
+
+abs-comp-path    = "/VCALENDAR" *comp-segment
+       ; Absolute path for components only
+
+comp-path        = 1*comp-segment
+       ; Path for components only
+
+prop-path        = prop-segment
+       ; Relative path for properties only
+
+prop-param-path  = prop-segment [param-segment]
+       ; Relative path for property and parameter only
+
+prop-all-path    = prop-segment [param-segment] [value-segment]
+       ; Relative path for any element of a property
+
+comp-segment     = "/" name comp-match
+comp-match       = [uid-match] [rid-match]
+uid-match        = "[UID=" value-escaped "]"
+rid-match        = "[RID=" ("M" / ridval) "]"
+       ; "M" matches "master" component
+
+prop-segment     = prop-prefix [prop-match]
+prop-prefix      = "#" name
+prop-match       = "[" ( prop-equal / prop-not-equal /
+                        param-match ) "]"
+
+prop-equal       = "=" value-escaped
+prop-not-equal   = "!" value-escaped
+
+param-match      = "@" param-name [ ( param-equal /
+                                     param-not-equal ) ]
+param-equal      = "=" param-value-escaped
+param-not-equal  = "!" param-value-escaped
+
+param-segment    = ";" param-name
+
+value-segment    = "=" (value / param-value)
+
+value-escaped       = value
+                   ; % encoding for "/", "#", ";", and "]"
+
+param-value-escaped = param-value
+                   ; % encoding for "/", "#", ";", and "]"
+----
+
+Some examples of "path" items follow.
+
+Targeting components (path contains exactly one or more component segments):
+
+* "`/VCALENDAR`"
++
+Targets the "VCALENDAR" component in the iCalendar object.
+
+* "`/VCALENDAR/VEVENT`"
++
+Targets all "VEVENT" components in the "VCALENDAR" component in the iCalendar object.
+
+* "`/VCALENDAR/VEVENT[UID=1234]`"
++
+Targets any "VEVENT" components that have a "UID" property value exactly equal to "1234", in
+the "VCALENDAR" component in the iCalendar object.
+
+* "`/VCALENDAR/VEVENT[UID=1234%2F4567][RID=M]`"
++
+Targets any "VEVENT" components that have a "UID" property value exactly equal to "1234/4567"
+and do not have a "RECURRENCE-ID" property, in the "VCALENDAR" component in the iCalendar
+object.
+
+* "`/VCALENDAR/VEVENT[UID=1234][RID=20160902T223000Z]`"
++
+Targets any "VEVENT" components that have a "UID" property value exactly equal to "1234" and
+have a "RECURRENCE-ID" property whose UTC value is "20160902T223000Z", in the "VCALENDAR"
+component in the iCalendar object.
+
+Targeting properties (path contains exactly zero or more component segments, and one property
+segment):
+
+* "`/VCALENDAR/VEVENT#STATUS`"
++
+Targets all "STATUS" properties in all "VEVENT" components in the "VCALENDAR" component in the
+iCalendar object.
+
+* "`/VCALENDAR/VEVENT[UID=1234]#STATUS`"
++
+Targets all "STATUS" properties in any "VEVENT" components that have a "UID" property value
+exactly equal to "1234", in the "VCALENDAR" component in the iCalendar object.
+
+* "`/VCALENDAR/VEVENT#ATTENDEE[=mailto:cyrus@example.com]`"
++
+Targets any "ATTENDEE" properties that have the value "mailto:cyrus@example.com" in all
+"VEVENT" components, in the "VCALENDAR" component in the iCalendar object.
+
+* "`/VCALENDAR/VEVENT#ATTENDEE[!mailto:cyrus@example.com]`"
++
+Targets any "ATTENDEE" properties that do not have the value "mailto:cyrus@example.com" in all
+"VEVENT" components, in the "VCALENDAR" component in the iCalendar object.
+
+* "`/VCALENDAR/VEVENT#ATTENDEE[@MEMBER]`"
++
+Targets any "ATTENDEE" properties that have a "MEMBER" property parameter present in all
+"VEVENT" components, in the "VCALENDAR" component in the iCalendar object
+
+* "`/VCALENDAR/VEVENT#ATTENDEE[@CN=Cyrus Daboo]`"
++
+Targets any "ATTENDEE" properties that have a "CN" property parameter with the value "Cyrus
+Daboo" present in all "VEVENT" components, in the "VCALENDAR" component in the iCalendar
+object.
+
+* "`/VCALENDAR/VEVENT#ATTENDEE[@CN!Cyrus Daboo]`"
++
+Targets any "ATTENDEE" properties that have a "CN" property parameter not equal to the value
+"Cyrus Daboo", or do not have a "CN" property parameter present in all "VEVENT" components, in
+the "VCALENDAR" component in the iCalendar object.
+
+* "`#ATTENDEE[=mailto:cyrus@example.com]`"
++
+A relative path that targets any "ATTENDEE" properties that have the value
+"mailto:cyrus@example.com" in all components the path is relative to.
+
+Targeting property parameters (path contains exactly zero or more component segments, one
+property segment, and one parameter segment):
+
+* "`/VCALENDAR/VEVENT#ATTENDEE;PARTSTAT`"
++
+Targets the "PARTSTAT" parameter on all "ATTENDEE" properties in all "VEVENT" components in
+the "VCALENDAR" component in the iCalendar object.
+
+* "`/VCALENDAR/VEVENT#ATTENDEE[=mailto:cyrus@example.com];PARTSTAT`"
++
+Targets the "PARTSTAT" parameter on any "ATTENDEE" properties that have the value
+"mailto:cyrus@example.com" in all "VEVENT" components, in the "VCALENDAR" component in the
+iCalendar object.
+
+Targeting property values (path contains exactly zero or more component segments, one property
+segment, and one value segment):
+
+* "`/VCALENDAR/VEVENT#EXDATE=20160905`"
++
+Targets all "EXDATE" property values with the value "20160905" in all "VEVENT" components in
+the "VCALENDAR" component in the iCalendar object.
+
+Targeting property parameter values (path contains exactly zero or more component segments,
+one property segment, one parameter segment, and one value segment):
+
+* "`/VCALENDAR/VEVENT#ATTENDEE;MEMBER=mailto:group@example.com`"
++
+Targets all "MEMBER" property parameter values with the value "mailto:group@example.com" in
+all "ATTENDEE" properties in all "VEVENT" components in the "VCALENDAR" component in the
+iCalendar object.
