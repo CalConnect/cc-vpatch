@@ -1,0 +1,10 @@
+---
+metanorma:
+  source:
+    files:
+      - sources/cc-58020.adoc
+      - sources/draft-calconnect-vpatch.adoc
+
+  collection:
+    name: iCalendar VPATCH Component
+    organization: CalConnect

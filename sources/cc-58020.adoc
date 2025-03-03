@@ -1,0 +1,72 @@
+= The iCalendar VPATCH Component
+:docnumber: 58020
+:copyright-year: 2016
+:language: en
+:doctype: standard
+:edition: 1
+:status: working-draft
+:revdate: 2016-10-28
+:published-date: 2016-10-28
+:technical-committee: VCARD
+:fullname: Cyrus Daboo
+:surname: Daboo
+:givenname: Cyrus
+:affiliation: Apple Inc.
+:fullname_2: Kenneth Murchison
+:surname_2: Murchison
+:givenname_2: Kenneth
+:affiliation_2: Carnegie Mellon University
+:mn-document-class: cc
+:mn-output-extensions: xml,html,pdf,rxl
+:local-cache-only:
+:data-uri-image:
+
+include::sections/00-abstract.adoc[]
+
+include::sections/01-intro.adoc[]
+
+include::sections/01-scope.adoc[]
+
+include::sections/02-normative-references.adoc[]
+
+include::sections/03-terms.adoc[]
+
+include::sections/03-overview.adoc[]
+
+include::sections/04-patch.adoc[]
+
+include::sections/05-icalendar-path.adoc[]
+
+include::sections/06-add-update-comp.adoc[]
+
+include::sections/07-add-update-prop.adoc[]
+
+include::sections/08-delete.adoc[]
+
+include::sections/09-add-update-propp.adoc[]
+
+include::sections/10-icalendar-ext.adoc[]
+
+include::sections/11-additional.adoc[]
+
+include::sections/12-itip.adoc[]
+
+include::sections/13-caldav.adoc[]
+
+include::sections/14-security.adoc[]
+
+include::sections/15-privacy.adoc[]
+
+include::sections/16-iana.adoc[]
+
+include::sections/97-examples.adoc[]
+
+include::sections/17-remove-value.adoc[]
+
+include::sections/98-references.adoc[]
+
+include::sections/99-acknowledgements.adoc[]
+
+include::sections/ac-vpatch-examples.adoc[]
+
+include::sections/ad-remove-value.adoc[]

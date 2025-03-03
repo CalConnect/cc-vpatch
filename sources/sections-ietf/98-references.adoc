@@ -1,0 +1,24 @@
+[bibliography]
+== References
+
+[bibliography]
+=== Normative References
+
+* [[[RFC2119,IETF RFC 2119]]]
+
+* [[[RFC5545,IETF RFC 5545]]]
+
+* [[[RFC7953,IETF RFC 7953]]]
+
+[bibliography]
+=== Informative References
+
+* [[[CALCONNECT,CALCONNECT]]], The Calendaring and Scheduling Consortium, "CalConnect", May 2017, <https://www.calconnect.org>.
+
+* [[[RFC4791,IETF RFC 4791]]]
+
+* [[[RFC5234,IETF RFC 5234]]]
+
+* [[[RFC5546,IETF RFC 5546]]]
+
+* [[[RFC5789,IETF RFC 5789]]]

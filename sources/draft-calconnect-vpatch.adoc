@@ -1,0 +1,81 @@
+= The iCalendar VPATCH Component
+:doctype: internet-draft
+:name: draft-daboo-icalendar-vpatch
+:status: standard
+:ipr: trust200902
+:area: Applications
+:updates: IETF RFC 5545, IETF RFC 6321
+:intended-series: full-standard
+:workgroup: Network Working Group
+:published-date: 2016-10-28
+:fullname: Cyrus Daboo
+:lastname: Daboo
+:forename_initials: C.
+:affiliation: Apple Inc.
+:address: 1 Infinite Loop + \
+Cupertino, CA 95014 + \
+United States of America
+:email: cyrus@daboo.name
+:contributor-uri: http://www.apple.com/
+:fullname_2: Kenneth Murchison
+:lastname_2: Murchison
+:forename_initials_2: K.
+:affiliation_2: Carnegie Mellon University
+:address_2: 5000 Forbes Avenue + \
+Pittsburgh, PA 15213 + \
+USA
+:email_2: murch@andrew.cmu.edu
+:contributor-uri_2: https://www.cmu.edu
+:mn-document-class: ietf
+:mn-output-extensions: xml,rfc,txt,html,rxl
+:local-cache-only:
+:data-uri-image:
+
+include::sections-ietf/00-abstract.adoc[]
+
+include::sections/01-intro.adoc[]
+
+include::sections-ietf/02-conventions.adoc[]
+
+include::sections/03-overview.adoc[]
+
+include::sections/04-patch.adoc[]
+
+include::sections/05-icalendar-path.adoc[]
+
+include::sections/06-add-update-comp.adoc[]
+
+include::sections/07-add-update-prop.adoc[]
+
+include::sections/08-delete.adoc[]
+
+include::sections/09-add-update-propp.adoc[]
+
+include::sections/10-icalendar-ext.adoc[]
+
+include::sections/11-additional.adoc[]
+
+include::sections/12-itip.adoc[]
+
+include::sections/13-caldav.adoc[]
+
+include::sections/14-security.adoc[]
+
+include::sections/15-privacy.adoc[]
+
+include::sections/16-iana.adoc[]
+
+include::sections/97-examples.adoc[]
+
+include::sections/17-remove-value.adoc[]
+
+include::sections-ietf/98-references.adoc[]
+
+include::sections/99-acknowledgements.adoc[]
+
+include::sections-ietf/aa-change-history.adoc[]
+
+include::sections/ac-vpatch-examples.adoc[]
+
+include::sections/ad-remove-value.adoc[]
+
