@@ -3,7 +3,7 @@ metanorma:
   source:
     files:
       - sources/cc-58020.adoc
-      - sources/draft-calconnect-vpatch.adoc
+      - sources/draft-daboo-icalendar-vpatch.adoc
 
   collection:
     name: iCalendar VPATCH Component
