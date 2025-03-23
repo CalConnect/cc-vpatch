@@ -30,7 +30,8 @@ END:VCALENDAR
 
 === Add a new VALARM component
 
-Creates a new "VALARM" component in the "VEVENT" component with the "UID" property value "1234".
+Creates a new "VALARM" component in the "VEVENT" component with the "UID"
+property value "1234".
 
 [source%unnumbered]
 ----
@@ -55,7 +56,8 @@ END:VCALENDAR
 
 === Replace a component
 
-Replace the "VEVENT" component with the "UID" property value "1234" with a new component.
+Replace the "VEVENT" component with the "UID" property value "1234" with a new
+component.
 
 [source%unnumbered]
 ----
@@ -100,8 +102,8 @@ END:VCALENDAR
 
 === Add properties to a component
 
-Add "STATUS" and "COMPLETED" properties to the "VTODO" component with the "UID" property value
-"4321".
+Add "STATUS" and "COMPLETED" properties to the "VTODO" component with the "UID"
+property value "4321".
 
 [source%unnumbered]
 ----
@@ -122,8 +124,8 @@ END:VCALENDAR
 
 === Update properties in a component
 
-Update the "SUMMARY" and "LOCATION" properties in the "VEVENT" component with the "UID"
-property value "1234".
+Update the "SUMMARY" and "LOCATION" properties in the "VEVENT" component with
+the "UID" property value "1234".
 
 [source%unnumbered]
 ----
@@ -144,8 +146,8 @@ END:VCALENDAR
 
 === Update a targeted property in a component
 
-Update the "ATTENDEE" property with value "mailto:cyrus@example.com" in the "VEVENT" component
-with the "UID" property value "1234".
+Update the "ATTENDEE" property with value "mailto:cyrus@example.com" in the
+"VEVENT" component with the "UID" property value "1234".
 
 [source%unnumbered]
 ----
@@ -166,7 +168,8 @@ END:VCALENDAR
 
 === Remove a property from a component
 
-Remove the "URL" property from the "VEVENT" component with the "UID" property value "1234".
+Remove the "URL" property from the "VEVENT" component with the "UID" property
+value "1234".
 
 [source%unnumbered]
 ----
@@ -186,8 +189,8 @@ END:VCALENDAR
 
 === Remove a property with a specific value from a component
 
-Remove the "ATTENDEE" property with the value "mailto:cyrus@example.com" in the "VEVENT"
-component with the "UID" property value "1234".
+Remove the "ATTENDEE" property with the value "mailto:cyrus@example.com" in the
+"VEVENT" component with the "UID" property value "1234".
 
 [source%unnumbered]
 ----
@@ -208,7 +211,8 @@ END:VCALENDAR
 === Change a parameter on a property with a specific value from a component
 
 Change or add the "PARTSTAT" parameter on the "ATTENDEE" property with the value
-"mailto:cyrus@example.com" in the "VEVENT" component with the "UID" property value "1234".
+"mailto:cyrus@example.com" in the "VEVENT" component with the "UID" property
+value "1234".
 
 [source%unnumbered]
 ----
@@ -230,7 +234,8 @@ END:VCALENDAR
 === Remove a parameter on a property with a specific value from a component
 
 Remove the "PARTSTAT" parameter from the "ATTENDEE" property with the value
-"mailto:cyrus@example.com" in the "VEVENT" component with the "UID" property value "1234".
+"mailto:cyrus@example.com" in the "VEVENT" component with the "UID" property
+value "1234".
 
 [source%unnumbered]
 ----

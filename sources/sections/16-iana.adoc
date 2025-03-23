@@ -3,8 +3,8 @@
 
 === Component Registrations
 
-This document defines the following new iCalendar components to be added to the registry
-defined in <<RFC5545,section=8.3.1>>:
+This document defines the following new iCalendar components to be added to the
+registry defined in <<RFC5545,section=8.3.1>>:
 
 [cols="1,1,1",options="header"]
 |===
@@ -15,8 +15,8 @@ defined in <<RFC5545,section=8.3.1>>:
 
 === Property Registrations
 
-This document defines the following new iCalendar properties to be added to the registry
-defined in <<RFC5545,section=8.3.2>>:
+This document defines the following new iCalendar properties to be added to the
+registry defined in <<RFC5545,section=8.3.2>>:
 
 [cols="1,1,1",options="header"]
 |===
@@ -30,8 +30,8 @@ defined in <<RFC5545,section=8.3.2>>:
 
 === Parameter Registrations
 
-This document defines the following new iCalendar parameters to be added to the registry
-defined in <<RFC5545,section=8.3.3>>:
+This document defines the following new iCalendar parameters to be added to the
+registry defined in <<RFC5545,section=8.3.3>>:
 
 [cols="1,1,1",options="header"]
 |===
@@ -41,9 +41,9 @@ defined in <<RFC5545,section=8.3.3>>:
 
 === Property and Parameter Value Registries
 
-Two new IANA registrys for iCalendar elements have been added. Additional codes MAY be used,
-provided the process described in <<RFC5545,section=8.2.1>> is used to register them, using
-the template in <<RFC5545,section=8.2.6>>.
+Two new IANA registrys for iCalendar elements have been added. Additional codes
+MAY be used, provided the process described in <<RFC5545,section=8.2.1>> is used
+to register them, using the template in <<RFC5545,section=8.2.6>>.
 
 ==== Patch Version Registry
 
