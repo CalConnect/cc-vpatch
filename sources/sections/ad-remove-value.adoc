@@ -1,9 +1,9 @@
 [appendix]
 == Remove a value from a multi-valued parameter on a property with a specific value from a component
 
-Remove the "mailto:calext@example.com" value from the "MEMBER" parameter on the "ATTENDEE"
-property with the value "mailto:cyrus@example.com" in the "VEVENT" component with the "UID"
-property value "1234".
+Remove the "mailto:calext@example.com" value from the "MEMBER" parameter on the
+"ATTENDEE" property with the value "mailto:cyrus@example.com" in the "VEVENT"
+component with the "UID" property value "1234".
 
 [source%unnumbered]
 ----
@@ -24,8 +24,8 @@ END:VCALENDAR
 
 === Remove a value from a multi-valued property from a component
 
-Remove the value "20160903T120000Z" from the "EXDATE" property in the
-"VEVENT" component with the "UID" property value "1234".
+Remove the value "20160903T120000Z" from the "EXDATE" property in the "VEVENT"
+component with the "UID" property value "1234".
 
 [source%unnumbered]
 ----
@@ -45,14 +45,13 @@ END:VCALENDAR
 
 === Attendee updating their participation status
 
-When an attendee updates their participation status in an event, they
-will typically: update the "PARTSTAT" parameter on their "ATTENDEE"
-property, remove the "RSVP" parameter on their "ATTENDEE" property,
-update the "TRANSP" property in the "VEVENT" component.  This set of
-changes is shown below in a single "PATCH" component, with the
-attendee having the calendar user address "mailto:cyrus@example.com".
-The patch targets all "VEVENT" components in the iCalendar object
-being changed.
+When an attendee updates their participation status in an event, they will
+typically: update the "PARTSTAT" parameter on their "ATTENDEE" property, remove
+the "RSVP" parameter on their "ATTENDEE" property, update the "TRANSP" property
+in the "VEVENT" component.  This set of changes is shown below in a single
+"PATCH" component, with the attendee having the calendar user address
+"mailto:cyrus@example.com". The patch targets all "VEVENT" components in the
+iCalendar object being changed.
 
 [source%unnumbered]
 ----
@@ -75,8 +74,8 @@ END:VCALENDAR
 
 === Recurring event adding one override
 
-A daily recurring "VEVENT" component with the "SUMMARY" property
-being overridden for the second instance.
+A daily recurring "VEVENT" component with the "SUMMARY" property being
+overridden for the second instance.
 
 iCalendar object before the patch:
 
@@ -139,8 +138,8 @@ END:VCALENDAR
 
 === Removal of an overridden instance
 
-A daily recurring "VEVENT" component has one existing instance
-override removed with an "EXDATE" added for it.
+A daily recurring "VEVENT" component has one existing instance override removed
+with an "EXDATE" added for it.
 
 iCalendar object before the patch:
 

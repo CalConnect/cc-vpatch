@@ -1,0 +1,9 @@
+.DS_Store
+*.abort
+*.err
+relaton/
+.vscode/
+.ruby-lsp/
+Gemfile.lock
+iev/
+_site/

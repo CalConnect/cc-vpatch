@@ -1,13 +1,7 @@
 [[scope]]
 == Scope
 
-//This document defines a new iCalendar component called "VPATCH" that allows incremental updates
-//to be applied to iCalendar data. It specifies:
-
-//* The structure and properties of the VPATCH component
-//* The syntax for iCalendar paths to target specific elements
-//* Operations for adding, updating, and deleting components, properties, and parameters
-//* Integration with CalDAV and HTTP protocols
-
-//This document is applicable to calendar client and server developers who want to implement
-//efficient update mechanisms for iCalendar data.
+This document defines a new iCalendar <<RFC5545>> component that allows small
+"patches" to be applied to large iCalendar data objects, to allow for efficient
+data updates. It also describes how this new component can be used with the
+CalDAV calendar data access protocol <<RFC4791>>.

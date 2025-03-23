@@ -31,6 +31,8 @@ include::sections/02-normative-references.adoc[]
 
 include::sections/03-terms.adoc[]
 
+include::sections/03-conventions.adoc[]
+
 include::sections/03-overview.adoc[]
 
 include::sections/04-patch.adoc[]
